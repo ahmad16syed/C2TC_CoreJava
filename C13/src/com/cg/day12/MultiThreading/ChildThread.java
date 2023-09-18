@@ -1,20 +1,25 @@
+//Program to demonstrate creating a child Thread class - extending Thread class
 package com.cg.day12.MultiThreading;
 
-public class ChildThread extends Thread{
+public class ChildThread extends Thread {
+    private int n;
+    private String msg;
 
-	@Override
-    public void run() {
-		
-        // Code to be executed in the thread
-        for (int i = 0; i < 5; i++) {
-            System.out.println("Thread: " + i);
-            try {
-                Thread.sleep(1000); // Pause the thread for 1 second
-            } catch (InterruptedException e) {
-                System.err.println(e);
-            }
-        }
-        
+    public ChildThread(int n, String msg) {
+        this.n = n;
+        this.msg = msg;
     }
-	
+
+    @Override
+    public void run() {
+        for (int i = 1; i <= n; i++) {
+            try {
+                Thread.sleep(300);
+            } catch (InterruptedException e) {
+                System.err.println("Thread interrupted: " + e.getMessage());
+                Thread.currentThread().interrupt(); // Restore interrupted status
+            }
+            System.out.println(msg + i + " " + Thread.currentThread().getName());
+        }
+    }
 }

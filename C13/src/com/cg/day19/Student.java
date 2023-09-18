@@ -1,6 +1,5 @@
-//Program to demonstrate Student entity  
-
-package com.cg.day14.UserdefinedObject;
+//Program to demonstrate Student Entity Class
+package com.cg.day19;
 
 public class Student {
 	private int rollNo;
